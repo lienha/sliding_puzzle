@@ -159,6 +159,22 @@
                     empty.bottom = previous.top + pieceH;
                     empty.right = previous.left + pieceW;
                 }
+
+                $.each(positions, function(i) {
+                    var currentPiece = $("#" + (i + 1)),
+                        currentPosition = getPosition(currentPiece);
+
+                    if (positions[i].top === currentPosition.top && positions[i].left === currentPosition.left) {
+                        correctPieces++;
+                    }
+                });
+
+                if (correctPieces === positions.length) {
+                    clearInterval(timer);
+                    positions.unshift(firstPiece);
+                    firstPiece.appendTo(imgContainer);
+                    $("<p>", {text: "Congratulations, you solved the puzzle!"}).appendTo("#ui");
+                }
             }
         });
 
