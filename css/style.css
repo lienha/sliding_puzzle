@@ -36,3 +36,15 @@ h1 {
     height: 50px;
     font-size: 1.75em;
 }
+
+#pause {
+    width: 204px;
+    height: 50px;
+    font-size: 1.75em;
+}
+
+#resume {
+    width: 204px;
+    height: 50px;
+    font-size: 1.75em;
+}

@@ -47,6 +47,7 @@
         container.find("#0").remove();
         positions.shift();
         $("#start").remove();
+        $("<button id='pause'>Pause</button>").appendTo('#ui');
         var pieces = imgContainer.children();
 
         function shuffle(array) {
@@ -81,6 +82,20 @@
         currentTime.seconds = 0;
         currentTime.minutes = 0;
         currentTime.hours = 0;
+
+        $("<button id='resume'>Resume</button>").appendTo('#ui').hide();
+        $("#pause").on("click", function() {
+            $("#pause").hide();
+            $("#resume").show();
+            clearInterval(timer);
+        });
+
+
+        $("#resume").on("click", function() {
+            $("#resume").hide();
+            $("#pause").show();
+            timer = setInterval(updateTime, 1000);
+        });
 
         function updateTime() {
             if (currentTime.hours === 23 && currentTime.minutes === 59 && currentTime.seconds === 59) {
@@ -174,6 +189,7 @@
                     positions.unshift(firstPiece);
                     firstPiece.appendTo(imgContainer);
                     $("<p>", {text: "Congratulations, you solved the puzzle!"}).appendTo("#ui");
+                    $("button").remove();
 
                     var totalSeconds = (currentTime.hours * 60 * 60) + (currentTime.minutes * 60) + currentTime.seconds;
 
