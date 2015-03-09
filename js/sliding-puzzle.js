@@ -87,6 +87,7 @@
         $("#pause").on("click", function() {
             $("#pause").hide();
             $("#resume").show();
+            alert("Timer is on pause.");
             clearInterval(timer);
         });
 
@@ -94,6 +95,7 @@
         $("#resume").on("click", function() {
             $("#resume").hide();
             $("#pause").show();
+            alert("Timer is now resume.");
             timer = setInterval(updateTime, 1000);
         });
 
