@@ -47,7 +47,7 @@
         container.find("#0").remove();
         positions.shift();
         $("#start").remove();
-        $("<button id='pause'>Pause</button>").appendTo('#ui');
+        
         var pieces = imgContainer.children();
 
         function shuffle(array) {
@@ -83,21 +83,6 @@
         currentTime.minutes = 0;
         currentTime.hours = 0;
 
-        $("<button id='resume'>Resume</button>").appendTo('#ui').hide();
-        $("#pause").on("click", function() {
-            $("#pause").hide();
-            $("#resume").show();
-            alert("Timer is on pause.");
-            clearInterval(timer);
-        });
-
-
-        $("#resume").on("click", function() {
-            $("#resume").hide();
-            $("#pause").show();
-            alert("Timer is now resume.");
-            timer = setInterval(updateTime, 1000);
-        });
 
         function updateTime() {
             if (currentTime.hours === 23 && currentTime.minutes === 59 && currentTime.seconds === 59) {
